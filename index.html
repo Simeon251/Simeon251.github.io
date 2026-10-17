@@ -10,44 +10,69 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F5FA8'/%3E%3Cpath d='M18 4 9 18h6l-2 10 10-15h-6z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..800;1,8..60,300..800&display=swap">
+
 <style>
   :root {
     color-scheme: light;
-    --paper: #F7F8FA;
+    --paper: #F8F9FA;
     --surface: #FFFFFF;
-    --ink: #15202B;
-    --muted: #4B5A66;
-    --rule: #D9DEE3;
-    --accent: #1F5FA8;
-    --accent-ink: #164A85;
-    --live: #B35F00;
+    --ink: #111827;
+    --muted: #4B5563;
+    --rule: #E5E7EB;
+    --accent: #1D4ED8;
+    --accent-ink: #1E40AF;
+    --accent-bg: #EFF6FF;
+    --live: #D97706;
+    --badge-bg: #F3F4F6;
+    --badge-text: #374151;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --header-bg: rgba(248, 249, 250, 0.85);
     --sans: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   }
+
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       color-scheme: dark;
-      --paper: #0F1720;
-      --surface: #16212C;
-      --ink: #E6EBF0;
-      --muted: #A3B0BB;
-      --rule: #2A3642;
-      --accent: #7DB1FF;
-      --accent-ink: #A9CBFF;
-      --live: #F0A43A;
+      --paper: #0B0F17;
+      --surface: #131A26;
+      --ink: #F3F4F6;
+      --muted: #9CA3AF;
+      --rule: #1F2937;
+      --accent: #60A5FA;
+      --accent-ink: #93C5FD;
+      --accent-bg: rgba(96, 165, 250, 0.1);
+      --live: #F59E0B;
+      --badge-bg: #1F2937;
+      --badge-text: #D1D5DB;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --header-bg: rgba(11, 15, 23, 0.85);
     }
   }
+
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --paper: #0F1720; --surface: #16212C; --ink: #E6EBF0; --muted: #A3B0BB;
-    --rule: #2A3642; --accent: #7DB1FF; --accent-ink: #A9CBFF; --live: #F0A43A;
+    --paper: #0B0F17;
+    --surface: #131A26;
+    --ink: #F3F4F6;
+    --muted: #9CA3AF;
+    --rule: #1F2937;
+    --accent: #60A5FA;
+    --accent-ink: #93C5FD;
+    --accent-bg: rgba(96, 165, 250, 0.1);
+    --live: #F59E0B;
+    --badge-bg: #1F2937;
+    --badge-text: #D1D5DB;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --header-bg: rgba(11, 15, 23, 0.85);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
   :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
   body {
     margin: 0;
     background: var(--paper);
@@ -56,58 +81,132 @@
     font-size: 1.125rem;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
-  img, svg { max-width: 100%; }
-  a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+
+  img, svg { max-width: 100%; height: auto; }
+  a { color: var(--accent); text-underline-offset: 0.2em; text-decoration-thickness: 1px; transition: color 0.2s ease; }
   a:hover { color: var(--accent-ink); text-decoration-thickness: 2px; }
   :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
-  .measure { max-width: 40rem; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+  .measure { max-width: 42rem; }
 
   h1, h2, h3, nav, .ui { font-family: var(--sans); }
-  h1 { font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1.02; letter-spacing: -0.025em; font-weight: 700; margin: 0; }
-  h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; letter-spacing: -0.015em; font-weight: 650; margin: 0 0 1.25rem; }
-  h3 { font-size: 1.2rem; line-height: 1.3; font-weight: 600; margin: 0; }
+  h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; margin: 0; color: var(--ink); }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1.18; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 1.25rem; }
+  h3 { font-size: 1.25rem; line-height: 1.35; font-weight: 600; margin: 0; color: var(--ink); }
   p { margin: 0 0 1rem; }
 
   /* Header */
-  .site-head { border-bottom: 1px solid var(--rule); }
-  .site-head .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 2rem; padding-top: 1rem; padding-bottom: 1rem; }
-  .brand { font-family: var(--sans); font-weight: 600; color: var(--ink); text-decoration: none; font-size: 1rem; }
+  .site-head {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+  @media (max-width: 700px) { .site-head { position: static; } }
+  .site-head .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 0.85rem; padding-bottom: 0.85rem; }
+  .brand { font-family: var(--sans); font-weight: 700; color: var(--ink); text-decoration: none; font-size: 1.05rem; letter-spacing: -0.01em; }
+  .header-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; }
   nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin: 0; padding: 0; font-size: 0.95rem; }
-  nav a { color: var(--muted); text-decoration: none; display: inline-block; padding: 0.6rem 0; }
+  nav a { color: var(--muted); text-decoration: none; font-weight: 500; display: inline-block; padding: 0.4rem 0; transition: color 0.15s ease; }
   nav a:hover { color: var(--ink); }
 
+  /* Theme Toggle Button */
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    padding: 0.4rem 0.85rem;
+    min-height: 36px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: var(--sans);
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+  }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--muted); background: var(--surface); }
+
   /* Hero */
-  .hero { padding: 4.5rem 0 4rem; }
-  .hero-grid { display: grid; gap: 3rem; align-items: center; }
-  @media (min-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); } }
-  .kicker { font-family: var(--sans); font-size: 1rem; color: var(--muted); margin: 0 0 1.25rem; }
-  .lede { font-size: 1.3rem; line-height: 1.55; color: var(--ink); margin: 1.75rem 0 0; max-width: 34rem; }
+  .hero { padding: 4.5rem 0 3.5rem; }
+  .hero-grid { display: grid; gap: 3rem; align-items: start; }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; } }
+  .kicker { font-family: var(--sans); font-size: 1rem; font-weight: 600; color: var(--accent); margin: 0 0 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .lede { font-size: 1.25rem; line-height: 1.6; color: var(--ink); margin: 1.5rem 0 0; max-width: 36rem; }
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; font-family: var(--sans); }
-  .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.3rem; border-radius: 6px; font-weight: 600; font-size: 1rem; text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; }
-  .btn:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    background: var(--surface);
+    box-shadow: var(--card-shadow);
+    overflow-wrap: anywhere;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn:hover { border-color: var(--muted); transform: translateY(-1px); color: var(--ink); text-decoration: none; }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
   .btn.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); color: #FFFFFF; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #0F1720; } }
-  :root[data-theme="dark"] .btn.primary { color: #0F1720; }
+  :root[data-theme="dark"] .btn.primary, :root[data-theme="dark"] .btn.primary:hover { color: #0B0F17; }
 
-  .headshot { display: block; width: 128px; height: 128px; border-radius: 50%; object-fit: cover; object-position: 50% 50%; margin: 0 0 1.5rem; border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--rule); }
-  .btn { overflow-wrap: anywhere; }
+  .headshot {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    margin: 0 0 1.5rem;
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--rule), var(--card-shadow);
+  }
 
-  /* Photos */
+  /* Visual Badges */
+  .badge-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+  .badge {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border-radius: 6px;
+    border: 1px solid var(--rule);
+  }
+
+  /* Photos & Gallery */
   .photo { margin: 1.25rem 0 0; }
-  .photo img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; background: var(--rule); }
-  .photo figcaption, .gallery figcaption { font-family: var(--sans); font-size: 0.88rem; color: var(--muted); line-height: 1.45; margin-top: 0.5rem; }
-  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem 1.5rem; margin-top: 3rem; }
+  .photo-frame { overflow: hidden; border-radius: 10px; background: var(--rule); border: 1px solid var(--rule); }
+  .photo img, .gallery img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform 0.3s ease; }
+  .gallery img { aspect-ratio: 4 / 3; }
+  .photo-frame:hover img { transform: scale(1.02); }
+  @media (prefers-reduced-motion: reduce) { .photo-frame:hover img { transform: none; } }
+  .photo figcaption, .gallery figcaption { font-family: var(--sans); font-size: 0.88rem; color: var(--muted); line-height: 1.45; margin-top: 0.6rem; }
+
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem 1.5rem; margin-top: 2rem; }
   .gallery figure { margin: 0; }
-  .gallery img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: var(--rule); }
-  .gallery-title { font-family: var(--sans); font-size: 1.05rem; font-weight: 600; margin: 3.5rem 0 0; }
+  .gallery-title { font-family: var(--sans); font-size: 1.1rem; font-weight: 700; margin: 3.5rem 0 0; letter-spacing: -0.01em; }
   .gallery-title + .gallery { margin-top: 1.25rem; }
 
-  /* One-line diagram */
-  figure.sld { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.25rem 1.25rem 0.75rem; }
+  /* One-line diagram SVG Container */
+  figure.sld { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.25rem 1.25rem 0.75rem; box-shadow: var(--card-shadow); }
   .sld svg { display: block; width: 100%; height: auto; }
   .sld .stroke { stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .sld .bus { stroke: var(--ink); stroke-width: 5; stroke-linecap: round; }
@@ -119,43 +218,46 @@
   .sld text.blue { fill: var(--accent); font-weight: 600; }
   @keyframes flow { to { stroke-dashoffset: -28; } }
   @media (prefers-reduced-motion: reduce) { .sld .flow { animation: none; } }
-  .sld figcaption { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); padding: 0.6rem 0.25rem 0; line-height: 1.45; }
+  .sld figcaption { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); padding: 0.75rem 0.25rem 0; line-height: 1.45; }
 
-  /* Facts row */
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem 2rem; margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--rule); font-family: var(--sans); }
-  .facts dt { font-size: 0.9rem; color: var(--muted); }
-  .facts dd { margin: 0.2rem 0 0; font-size: 1.05rem; font-weight: 600; }
+  /* Facts Grid */
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem 2rem; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-family: var(--sans); }
+  .facts dt { font-size: 0.88rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; font-weight: 600; }
+  .facts dd { margin: 0.25rem 0 0; font-size: 1.05rem; font-weight: 600; color: var(--ink); }
 
   /* Sections */
   section.block { padding: 4.5rem 0; border-top: 1px solid var(--rule); }
   section.alt { background: var(--surface); }
   .two { display: grid; gap: 2rem 4rem; }
-  @media (min-width: 900px) { .two { grid-template-columns: 15rem minmax(0, 1fr); } }
-  .section-note { font-family: var(--sans); color: var(--muted); font-size: 0.98rem; }
+  @media (min-width: 900px) { .two { grid-template-columns: 16rem minmax(0, 1fr); } }
+  .section-note { font-family: var(--sans); color: var(--muted); font-size: 0.98rem; line-height: 1.55; }
 
   .questions { display: grid; gap: 1.75rem; }
   .questions h3 { margin-bottom: 0.35rem; }
-  .questions p { margin: 0; color: var(--muted); }
+  .questions p { margin: 0; color: var(--muted); font-size: 1.05rem; }
 
-  .entry { padding: 1.6rem 0; border-top: 1px solid var(--rule); }
+  .entry { padding: 1.75rem 0; border-top: 1px solid var(--rule); }
   .entry:first-child { border-top: 0; padding-top: 0; }
-  .entry .meta { font-family: var(--sans); font-size: 0.92rem; color: var(--muted); margin: 0.3rem 0 0.75rem; }
+  .entry .meta { font-family: var(--sans); font-size: 0.92rem; color: var(--muted); margin: 0.3rem 0 0.85rem; font-weight: 500; }
   .entry p:last-child { margin-bottom: 0; }
-  .entry .links { font-family: var(--sans); font-size: 0.95rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 0.6rem; }
-  .entry .links a { display: inline-block; padding: 0.35rem 0; }
-  .numbers { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; font-family: var(--sans); margin: 0.9rem 0 0; }
-  .numbers div { font-size: 0.92rem; color: var(--muted); }
-  .numbers strong { display: block; color: var(--ink); font-size: 1.25rem; }
+  .entry .links { font-family: var(--sans); font-size: 0.95rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 0.8rem; }
+  .entry .links a { display: inline-flex; align-items: center; font-weight: 600; padding: 0.35rem 0; }
+
+  /* Formatted Metrics Grid */
+  .numbers { display: flex; flex-wrap: wrap; gap: 1rem; font-family: var(--sans); margin: 1.25rem 0 0; }
+  .numbers div { background: var(--paper); border: 1px solid var(--rule); padding: 0.6rem 1rem; border-radius: 8px; flex: 1 1 120px; min-width: 120px; font-size: 0.85rem; color: var(--muted); }
+  .numbers strong { display: block; color: var(--accent); font-size: 1.35rem; font-weight: 700; line-height: 1.2; }
 
   .cols { display: grid; gap: 2.5rem 3rem; }
   @media (min-width: 760px) { .cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  .cols h3 { margin-bottom: 0.9rem; }
-  .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; font-size: 1rem; }
-  .plain b { font-family: var(--sans); font-weight: 600; display: block; font-size: 0.95rem; }
+  .cols h3 { margin-bottom: 1rem; }
+  .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; font-size: 1rem; }
+  .plain li { line-height: 1.5; }
+  .plain b { font-family: var(--sans); font-weight: 600; display: block; font-size: 0.98rem; color: var(--ink); margin-bottom: 0.2rem; }
 
-  footer { padding: 4rem 0 3rem; border-top: 1px solid var(--rule); font-family: var(--sans); }
+  footer { padding: 4.5rem 0 3.5rem; border-top: 1px solid var(--rule); font-family: var(--sans); }
   footer h2 { margin-bottom: 0.75rem; }
-  footer .small { color: var(--muted); font-size: 0.9rem; margin-top: 2.5rem; }
+  footer .small { color: var(--muted); font-size: 0.9rem; margin-top: 3rem; }
 </style>
 </head>
 <body>
@@ -163,15 +265,20 @@
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="#top">Hatangimana Simeon</a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="header-controls">
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between light and dark theme">
+        <span id="themeIcon" aria-hidden="true">🌙</span> <span id="themeLabel">Dark</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -181,15 +288,15 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <img class="headshot" src="images/photo.jpg" alt="Portrait of Hatangimana Simeon" width="112" height="112" onerror="this.remove()">
-          <p class="kicker">Electrical and computer engineer in Kigali, Rwanda. Ph.D. applicant for Fall 2027.</p>
+          <img class="headshot" src="photo.jpg" alt="Portrait of Hatangimana Simeon" width="120" height="120" onerror="this.style.display='none'">
+          <p class="kicker">Kigali, Rwanda • Ph.D. Applicant Fall 2027</p>
           <h1>Learning-based control for renewable-rich grids</h1>
-          <p class="lede">I’m finishing an M.S. at Carnegie Mellon University Africa. I study how power electronics and machine learning can keep grids stable, protect batteries and work where data is scarce.</p>
+          <p class="lede">I’m completing my M.S. at Carnegie Mellon University Africa. I study how power electronics and machine learning can keep grids stable, protect batteries and work reliably where data is scarce.</p>
           <div class="actions">
             <a class="btn primary" href="mailto:shatangi@andrew.cmu.edu">Email me</a>
             <a class="btn" href="cv.pdf">Download CV</a>
-            <a class="btn" href="https://github.com/Simeon251">GitHub</a>
-            <a class="btn" href="https://linkedin.com/in/hatangimana-simeon-73b584252">LinkedIn</a>
+            <a class="btn" href="https://github.com/Simeon251" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://linkedin.com/in/hatangimana-simeon-73b584252" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
 
@@ -245,14 +352,14 @@
             <path class="ctrl" d="M214 236V100h-34V82"/>
             <text x="16" y="318" style="font-size:11.5px">Dashed: control setpoints. Moving dots: power flow.</text>
           </svg>
-          <figcaption>The kind of system I want to study: inverters for solar and storage, steered by a learned controller that is guaranteed stable and respects device current limits.</figcaption>
+          <figcaption>The kind of system I want to study: inverter-connected solar and storage, steered by a learned controller that is guaranteed stable and respects device current limits.</figcaption>
         </figure>
       </div>
 
       <dl class="facts">
         <div><dt>M.S. Electrical &amp; Computer Eng.</dt><dd>CMU-Africa, Dec 2026</dd></div>
-        <div><dt>Graduate GPA</dt><dd>3.62, rising from 3.38 to 3.83</dd></div>
-        <div><dt>B.Sc. Electrical Power Eng.</dt><dd>Ranked 2 of 41, University of Rwanda</dd></div>
+        <div><dt>Graduate GPA</dt><dd>3.62 (rising 3.38 → 3.83)</dd></div>
+        <div><dt>B.Sc. Electrical Power Eng.</dt><dd>Ranked 2 / 41, Univ. of Rwanda</dd></div>
         <div><dt>Membership</dt><dd>IEEE PES Student Member</dd></div>
       </dl>
     </div>
@@ -261,8 +368,8 @@
   <section class="block alt" id="research">
     <div class="wrap two">
       <div>
-        <h2>Research</h2>
-        <p class="section-note">Grids are already highly automated, but much of that automation still runs on fixed rules built for grids dominated by synchronous generators.</p>
+        <h2>Research Focus</h2>
+        <p class="section-note">Grids are already highly automated, but much of that automation still relies on fixed rules designed for grids dominated by synchronous generators.</p>
       </div>
       <div>
         <div class="questions measure">
@@ -276,15 +383,20 @@
           </div>
           <div>
             <h3>Methods for data-scarce systems</h3>
-            <p>How can these methods be trained and trusted where data is limited, as in the systems I have studied in Rwanda?</p>
+            <p>How can these methods be trained and trusted where historical data is limited, as in many microgrids in East Africa?</p>
           </div>
         </div>
 
         <div class="entry measure" style="margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 2rem;">
           <h3>Tracing battery materials through Rwanda’s economy</h3>
-          <p class="meta">Graduate research, CMU-Africa, Jan 2026 to present. With Prof. Sarath Tennakoon and Prof. Barry Rawn.</p>
-          <p>Part of a CEPREC project on end-of-life options for microgrid batteries. A review of recycling routes showed that in Rwanda, battery materials cannot be traced through the economy, so nobody knows how much sits in first-life use, second-life storage or waste.</p>
-          <p>I built a Python material flow analysis model from first principles to trace them from import to end of life. It shows tracing is structurally possible, but no national data yet exists to validate it, so I am collecting laboratory degradation data to ground its second-life assumptions.</p>
+          <p class="meta">Graduate Research • CMU-Africa • Jan 2026 – Present<br>Supervised by Prof. Sarath Tennakoon and Prof. Barry Rawn</p>
+          <p>Part of a CEPREC project on end-of-life options for microgrid batteries. In Rwanda, battery material flows are not tracked, so nobody knows how much sits in first-life use, second-life storage or waste.</p>
+          <p>I built a first-principles material flow analysis (MFA) model in Python to trace materials from import to end of life. Because national data to validate it does not yet exist, I am collecting laboratory degradation data to ground its second-life assumptions.</p>
+          <div class="badge-list">
+            <span class="badge">Python</span>
+            <span class="badge">Material Flow Analysis</span>
+            <span class="badge">Battery Testing</span>
+          </div>
         </div>
       </div>
     </div>
@@ -294,51 +406,65 @@
     <div class="wrap two">
       <div>
         <h2>Projects</h2>
-        <p class="section-note">Tools that help people make energy decisions with the data they have.</p>
+        <p class="section-note">Software and hardware tools that help people make energy decisions with the data they have.</p>
       </div>
       <div class="measure">
         <article class="entry">
           <h3>Battery Capacity Passport</h3>
-          <p class="meta">Aug–Dec 2025. Team project with Prof. Barry Rawn.</p>
-          <p>A certification concept for Rwanda’s e-mobility batteries. Garage diagnostics plus lab or cloud verification produce a tamper-proof digital passport, with a QR code and cryptographic signature, reporting state of health, usable capacity and internal resistance.</p>
+          <p class="meta">Aug – Dec 2025 • Team Project with Prof. Barry Rawn</p>
+          <p>A certification concept for Rwanda’s e-mobility batteries. Garage diagnostics plus lab or cloud verification produce a tamper-proof digital passport reporting state of health (SoH), usable capacity and internal resistance.</p>
           <div class="numbers">
-            <div><strong>Under $200k</strong>capital cost</div>
-            <div><strong>16%</strong>internal rate of return</div>
-            <div><strong>Year 7</strong>payback</div>
+            <div><strong>&lt; $200k</strong>Capital Cost</div>
+            <div><strong>16%</strong>Internal Rate of Return</div>
+            <div><strong>Year 7</strong>Payback Period</div>
           </div>
         </article>
 
         <article class="entry">
           <h3>MicroGrid Modeller</h3>
-          <p class="meta">Jan–May 2026. With Prof. Nathan Williams. Python, Streamlit.</p>
-          <p>Turns an operator’s system parameters into a dispatch simulation and techno-economic analysis of a proposed microgrid, with interactive dashboards and downloadable results, so people without modelling training can assess a microgrid before building it.</p>
-          <div class="links"><a href="https://github.com/Simeon251">Code on GitHub</a></div>
+          <p class="meta">Jan – May 2026 • With Prof. Nathan Williams</p>
+          <p>Turns an operator’s system parameters into a dispatch simulation and techno-economic analysis of a proposed microgrid, with interactive dashboards and downloadable results.</p>
+          <div class="badge-list">
+            <span class="badge">Python</span>
+            <span class="badge">Streamlit</span>
+            <span class="badge">Techno-Economic Modeling</span>
+          </div>
+          <div class="links"><a href="https://github.com/Simeon251" target="_blank" rel="noopener">Code on GitHub</a></div>
         </article>
 
         <article class="entry">
           <h3>Energy Outlook Navigator</h3>
-          <p class="meta">Jan 2025 – Mar 2026. Independent project. Python, Streamlit.</p>
-          <p>Built on United Nations energy datasets. Users view any country’s current energy profile and adjust input assumptions to explore future scenarios.</p>
-          <div class="links"><a href="https://github.com/Simeon251">Code on GitHub</a></div>
+          <p class="meta">Jan 2025 – Mar 2026 • Independent Project</p>
+          <p>An interactive tool built on United Nations energy datasets. Users view any country’s current energy profile and adjust input assumptions to explore future scenarios.</p>
+          <div class="badge-list">
+            <span class="badge">Python</span>
+            <span class="badge">Streamlit</span>
+            <span class="badge">Data Analytics</span>
+          </div>
+          <div class="links"><a href="https://github.com/Simeon251" target="_blank" rel="noopener">Code on GitHub</a></div>
         </article>
 
         <article class="entry">
-          <h3>Real-time deforestation monitoring in Sub-Saharan Africa</h3>
-          <p class="meta">Team research poster, Carnegie Mellon University Africa. With Martin Koome, Goodness Obasi and teammates.</p>
-          <p>Proposes AI classification of satellite imagery, such as Sentinel-2 and PlanetScope, to detect forest loss and its drivers, including logging and farming, and to alert authorities quickly enough to act.</p>
+          <h3>Real-time Deforestation Monitoring in Sub-Saharan Africa</h3>
+          <p class="meta">CMU-Africa Research Poster • With Martin Koome, Goodness Obasi and teammates</p>
+          <p>Proposes AI classification of Sentinel-2 and PlanetScope satellite imagery to detect forest loss and its drivers, such as logging and farming, and to alert authorities quickly enough to act.</p>
           <figure class="photo">
-            <img src="images/poster-cmu-africa.jpg" alt="Simeon pointing to a chart on the deforestation monitoring research poster" loading="lazy" style="object-position: 50% 35%;">
+            <div class="photo-frame">
+              <img src="poster-cmu-africa.jpg" alt="Simeon presenting a research poster at CMU-Africa" loading="lazy" style="object-position: 50% 35%;">
+            </div>
             <figcaption>Presenting our research poster at Carnegie Mellon University Africa.</figcaption>
           </figure>
         </article>
 
         <article class="entry">
-          <h3>Sensor-based smart irrigation</h3>
-          <p class="meta">B.Sc. final-year project, University of Rwanda. Embedded IoT.</p>
-          <p>A sensor-based irrigation system for sustainable farming in Rwanda, combining embedded hardware with automated control of water delivery.</p>
+          <h3>Sensor-based Smart Irrigation</h3>
+          <p class="meta">B.Sc. Final-Year Project • University of Rwanda • Embedded IoT</p>
+          <p>A sensor-based irrigation system for sustainable farming in Rwanda, combining embedded sensors with automated control of water delivery.</p>
           <figure class="photo">
-            <img src="images/final-year-project.jpg" alt="Simeon and a classmate wiring a pump, battery and sensors on a lab bench next to solar training panels" loading="lazy" style="object-position: 50% 45%;">
-            <figcaption>With Maxime, building the prototype in the University of Rwanda lab.</figcaption>
+            <div class="photo-frame">
+              <img src="final-year-project.jpg" alt="Simeon and a classmate assembling a hardware prototype in the UR lab" loading="lazy" style="object-position: 50% 45%;">
+            </div>
+            <figcaption>With Maxime, building and testing the prototype in the University of Rwanda lab.</figcaption>
           </figure>
         </article>
       </div>
@@ -349,39 +475,48 @@
     <div class="wrap two">
       <div>
         <h2>Experience</h2>
-        <p class="section-note">Industry work, from transmission data to building design.</p>
+        <p class="section-note">Industry work, from transmission data analysis to building electrical design.</p>
       </div>
       <div class="measure">
         <article class="entry">
-          <h3>Electrical Design Intern, QuestAfrica Ltd</h3>
-          <p class="meta">Nov 2024 – Jul 2025, Kigali</p>
-          <p>Integrated MEP electrical designs and engineering calculations to improve building energy efficiency, with technical reports and site support.</p>
+          <h3>Electrical Design Intern • QuestAfrica Ltd</h3>
+          <p class="meta">Nov 2024 – Jul 2025 • Kigali, Rwanda</p>
+          <p>Supported integrated MEP electrical designs and engineering calculations to improve building energy efficiency; prepared technical reports and provided site support.</p>
           <figure class="photo">
-            <img src="images/questafrica-2025.jpg" alt="Simeon in a hard hat and safety vest on a building site terrace" loading="lazy" style="object-position: 50% 30%;">
-            <figcaption>On site during my internship at QuestAfrica Ltd, 2025.</figcaption>
+            <div class="photo-frame">
+              <img src="questafrica-2025.jpg" alt="Simeon on a building site in a hard hat and safety vest" loading="lazy" style="object-position: 50% 30%;">
+            </div>
+            <figcaption>On site during my internship with QuestAfrica Ltd, 2025.</figcaption>
           </figure>
         </article>
+
         <article class="entry">
-          <h3>Engineering Intern, Kabuye Sugar Works</h3>
-          <p class="meta">Jun–Jul 2024, Kigali</p>
+          <h3>Engineering Intern • Kabuye Sugar Works</h3>
+          <p class="meta">Jun – Jul 2024 • Kigali, Rwanda</p>
           <p>Electrical installations, operation control, and maintenance of motors and generators in sugar production.</p>
         </article>
+
         <article class="entry">
-          <h3>Engineering Intern, Gasabo 3D</h3>
-          <p class="meta">Jan–May 2024, Kigali</p>
-          <p>Electrical consulting on the MPAZI rehousing project: lighting plans, single-line diagrams, load calculations and lightning protection, using AutoCAD and DIALux evo.</p>
+          <h3>Engineering Intern • Gasabo 3D</h3>
+          <p class="meta">Jan – May 2024 • Kigali, Rwanda</p>
+          <p>Electrical consulting on the MPAZI rehousing project: lighting plans, single-line diagrams, load calculations and lightning protection designs, using AutoCAD and DIALux evo.</p>
           <figure class="photo">
-            <img src="images/gasabo3d-mpazi-2024.jpg" alt="Simeon in a hard hat and safety vest standing on the slab of the MPAZI rehousing building" loading="lazy" style="object-position: 50% 25%;">
-            <figcaption>On the MPAZI rehousing site with Gasabo 3D, 2024.</figcaption>
+            <div class="photo-frame">
+              <img src="gasabo3d-mpazi-2024.jpg" alt="Simeon on the building slab at the MPAZI rehousing site" loading="lazy" style="object-position: 50% 25%;">
+            </div>
+            <figcaption>On site at the MPAZI rehousing project with Gasabo 3D, 2024.</figcaption>
           </figure>
         </article>
+
         <article class="entry">
-          <h3>Transmission and Distribution Intern, Rwanda Energy Group</h3>
-          <p class="meta">Jan–Apr 2023, Rubavu</p>
-          <p>Analysed transmission and distribution performance data across the Western Province network and prepared statistical reports for planning.</p>
+          <h3>Transmission &amp; Distribution Intern • Rwanda Energy Group</h3>
+          <p class="meta">Jan – Apr 2023 • Rubavu, Rwanda</p>
+          <p>Analysed transmission and distribution performance data across the Western Province network and prepared statistical reports for technical assessment and planning.</p>
           <figure class="photo">
-            <img src="images/reg-internship-2023.jpg" alt="Simeon in work overalls with a lineman safety belt" loading="lazy" style="object-position: 50% 40%;">
-            <figcaption>In the field during my Rwanda Energy Group internship, 2023.</figcaption>
+            <div class="photo-frame">
+              <img src="reg-internship-2023.jpg" alt="Simeon in work overalls with a lineman safety belt" loading="lazy" style="object-position: 50% 40%;">
+            </div>
+            <figcaption>In the field during my internship with Rwanda Energy Group, 2023.</figcaption>
           </figure>
         </article>
       </div>
@@ -391,53 +526,67 @@
   <section class="block" id="teaching">
     <div class="wrap two">
       <div>
-        <h2>Teaching and leadership</h2>
+        <h2>Teaching &amp; Leadership</h2>
         <p class="section-note">I have run a study group in every class since primary school. Explaining what I learn is how I learn it.</p>
       </div>
       <div class="measure">
         <article class="entry">
-          <h3>Teaching Assistant, Programming for Data Analytics</h3>
-          <p class="meta">Aug–Dec 2026, CMU-Africa. With Prof. George Okeyo.</p>
-          <p>Prepare assignments, quizzes and exams; grade, hold office hours and support lectures.</p>
+          <h3>Teaching Assistant • Programming for Data Analytics</h3>
+          <p class="meta">Aug – Dec 2026 • CMU-Africa • Prof. George Okeyo</p>
+          <p>Prepare assignments, quizzes and exams for review with Prof. Okeyo; grade assessments, supervise exams, hold office hours and support lectures.</p>
         </article>
+
         <article class="entry">
-          <h3>Teaching Assistant, Graduate Bridge Program</h3>
-          <p class="meta">Feb–May 2026, CMU-Africa. With Prof. Emmanuel Ndayishimiye.</p>
+          <h3>Teaching Assistant • Graduate Bridge Program</h3>
+          <p class="meta">Feb – May 2026 • CMU-Africa • Prof. Emmanuel Ndayishimiye</p>
           <p>Supported two cohorts in foundational engineering and programming, including a cross-campus cohort of more than 100 participants.</p>
         </article>
+
         <article class="entry">
-          <h3>President, Energy and Embedded Systems Club</h3>
-          <p class="meta">Dec 2025 to present, CMU-Africa</p>
-          <p>Student organiser of the 2026 Open Source in Energy Access Symposium with EnAccess and the World Resources Institute. I coordinated 10 volunteers and prepared about 50 students for an event of over 200 attendees.</p>
+          <h3>President • Energy &amp; Embedded Systems Club</h3>
+          <p class="meta">Dec 2025 – Present • CMU-Africa</p>
+          <p>Student organiser for the 2026 Open Source in Energy Access Symposium, co-hosted with EnAccess and the World Resources Institute. Coordinated 10 student volunteers and prepared about 50 student participants for an event of more than 200 attendees.</p>
         </article>
+
         <article class="entry">
-          <h3>General Coordinator, EmpowerForum CST</h3>
-          <p class="meta">2021–2023, University of Rwanda</p>
+          <h3>General Coordinator • EmpowerForum CST</h3>
+          <p class="meta">2021 – 2023 • University of Rwanda</p>
           <p>Led a student community in electrical power engineering while carrying a full course load, delegating and scheduling to keep every activity on track. Recognised with the Credible Leadership (CCL-3) award.</p>
         </article>
       </div>
     </div>
+
     <div class="wrap">
-      <p class="gallery-title">Leadership in pictures</p>
+      <p class="gallery-title">Leadership in Pictures</p>
       <div class="gallery">
         <figure>
-          <img src="images/coordinator-talk-2023.jpg" alt="Simeon speaking at a podium in a suit" loading="lazy" style="object-position: 60% 30%;">
+          <div class="photo-frame">
+            <img src="coordinator-talk-2023.jpg" alt="Simeon speaking at a podium" loading="lazy" style="object-position: 60% 30%;">
+          </div>
           <figcaption>Giving the General Coordinator’s address at the annual event, University of Rwanda, 2023.</figcaption>
         </figure>
         <figure>
-          <img src="images/certificate-ceremony-2022.jpg" alt="Simeon with a microphone as two guests exchange a certificate" loading="lazy" style="object-position: 50% 30%;">
-          <figcaption>Leading EmpowerForum’s certificate ceremony, University of Rwanda, 2022.</figcaption>
+          <div class="photo-frame">
+            <img src="certificate-ceremony-2022.jpg" alt="Simeon with a microphone as two guests exchange a certificate" loading="lazy" style="object-position: 50% 30%;">
+          </div>
+          <figcaption>Leading EmpowerForum’s certificate-awarding ceremony, University of Rwanda, 2022.</figcaption>
         </figure>
         <figure>
-          <img src="images/best-student-leader-2025.jpg" alt="A large group of students holding certificates" loading="lazy">
-          <figcaption>Recognised as best student leader at the University of Rwanda, 2025.</figcaption>
+          <div class="photo-frame">
+            <img src="best-student-leader-2025.jpg" alt="A large group of students holding certificates" loading="lazy">
+          </div>
+          <figcaption>Recognised as best student leader, University of Rwanda, 2025.</figcaption>
         </figure>
         <figure>
-          <img src="images/unipod-sdg-2025.jpg" alt="Students seated at a workshop in a modern innovation hub" loading="lazy">
+          <div class="photo-frame">
+            <img src="unipod-sdg-2025.jpg" alt="Students seated at a workshop in an innovation hub" loading="lazy">
+          </div>
           <figcaption>A student-led initiative promoting the Sustainable Development Goals at UNIPOD, 2025.</figcaption>
         </figure>
         <figure>
-          <img src="images/empowerforum-certificate.jpg" alt="Certificate of Recognition awarded to Hatangimana Simeon by EmpowerForum" loading="lazy" style="object-fit: contain; background: #FFFFFF;">
+          <div class="photo-frame" style="background:#FFFFFF;">
+            <img src="empowerforum-certificate.jpg" alt="Certificate of Recognition awarded to Hatangimana Simeon by EmpowerForum" loading="lazy" style="object-fit: contain;">
+          </div>
           <figcaption>Certificate of Recognition for service to EmpowerForum, signed by the UR-CST principal.</figcaption>
         </figure>
       </div>
@@ -449,37 +598,73 @@
       <div>
         <h3>Education</h3>
         <ul class="plain">
-          <li><b>M.S. Electrical &amp; Computer Engineering</b>Carnegie Mellon University Africa, 2025–2026. Power electronics for utility systems, deep learning, stochastic processes, energy data analytics.</li>
-          <li><b>B.Sc. Electrical Power Engineering</b>University of Rwanda, College of Science and Technology, 2021–2025. GPA 3.656/4.0, ranked 2 of 41.</li>
+          <li>
+            <b>M.S. Electrical &amp; Computer Engineering</b>
+            Carnegie Mellon University Africa, 2025–2026.<br>
+            <span style="font-size:0.9rem; color:var(--muted);">Coursework: power electronics for utility systems, deep learning, applied stochastic processes, energy data analytics.</span>
+          </li>
+          <li>
+            <b>B.Sc. Electrical Power Engineering</b>
+            University of Rwanda, 2021–2025.<br>
+            <span style="font-size:0.9rem; color:var(--muted);">GPA 3.656 / 4.0 • Ranked 2nd of 41.</span>
+          </li>
         </ul>
       </div>
+
       <div>
-        <h3>Awards</h3>
+        <h3>Honors &amp; Awards</h3>
         <ul class="plain">
-          <li>Government of Rwanda Scholarship, M.S., 2025–2026</li>
-          <li>Government of Rwanda Scholarship, B.Sc., 2021–2025</li>
-          <li>Community Spirit Award, CMU-Africa, 2025</li>
-          <li>Credible Leadership (CCL-3), University of Rwanda, 2025</li>
+          <li><b>Government of Rwanda Scholarship</b>M.S., 2025–2026</li>
+          <li><b>Government of Rwanda Scholarship</b>B.Sc., 2021–2025</li>
+          <li><b>Community Spirit Award</b>CMU-Africa, 2025</li>
+          <li><b>Credible Leadership (CCL-3)</b>University of Rwanda, 2025</li>
         </ul>
       </div>
+
       <div>
-        <h3>Skills</h3>
+        <h3>Technical Skills</h3>
         <ul class="plain">
-          <li><b>Programming</b>Python, MATLAB, C</li>
-          <li><b>Machine learning and data</b>PyTorch, TensorFlow, scikit-learn, NumPy, Pandas</li>
-          <li><b>Engineering tools</b>PowerWorld, AutoCAD, DIALux, embedded IoT</li>
-          <li><b>Languages</b>Kinyarwanda and Swahili (native), English (fluent), French (elementary)</li>
+          <li>
+            <b>Programming &amp; Data</b>
+            <div class="badge-list">
+              <span class="badge">Python</span>
+              <span class="badge">PyTorch</span>
+              <span class="badge">TensorFlow</span>
+              <span class="badge">scikit-learn</span>
+              <span class="badge">MATLAB</span>
+              <span class="badge">C</span>
+              <span class="badge">Pandas</span>
+            </div>
+          </li>
+          <li>
+            <b>Power &amp; Domain Tools</b>
+            <div class="badge-list">
+              <span class="badge">PowerWorld</span>
+              <span class="badge">AutoCAD</span>
+              <span class="badge">DIALux</span>
+              <span class="badge">Embedded IoT</span>
+            </div>
+          </li>
+          <li>
+            <b>Languages</b>
+            <span style="font-size:0.92rem; color:var(--muted);">Kinyarwanda &amp; Swahili (Native), English (Fluent), French (Elementary)</span>
+          </li>
         </ul>
       </div>
     </div>
+
     <div class="wrap">
-      <div class="gallery" style="max-width: 760px;">
+      <div class="gallery" style="max-width: 720px; margin-top: 2.5rem;">
         <figure>
-          <img src="images/graduation.jpg" alt="Graduation portrait of Simeon in cap and gown" loading="lazy" style="object-position: 50% 25%;">
+          <div class="photo-frame">
+            <img src="graduation.jpg" alt="Graduation portrait of Simeon in cap and gown" loading="lazy" style="object-position: 50% 25%;">
+          </div>
           <figcaption>B.Sc. graduation, University of Rwanda.</figcaption>
         </figure>
         <figure>
-          <img src="images/ur-banner.jpg" alt="Simeon standing in front of the University of Rwanda sign" loading="lazy" style="object-position: 40% 25%;">
+          <div class="photo-frame">
+            <img src="ur-banner.jpg" alt="Simeon in front of the University of Rwanda sign" loading="lazy" style="object-position: 40% 25%;">
+          </div>
           <figcaption>At the University of Rwanda, College of Science and Technology.</figcaption>
         </figure>
       </div>
@@ -490,17 +675,54 @@
 
 <footer id="contact">
   <div class="wrap">
-    <h2>Get in touch</h2>
-    <p class="measure" style="font-family: var(--serif);">I’m happy to talk about learning-based control, battery systems or energy access research.</p>
+    <h2>Get in Touch</h2>
+    <p class="measure" style="font-family: var(--serif); font-size: 1.15rem; color: var(--muted);">
+      I’m happy to discuss research in learning-based control, power electronics, battery systems or energy access.
+    </p>
     <div class="actions">
       <a class="btn primary" href="mailto:shatangi@andrew.cmu.edu">shatangi@andrew.cmu.edu</a>
       <a class="btn" href="mailto:simeonhatangimana251@gmail.com">simeonhatangimana251@gmail.com</a>
-      <a class="btn" href="https://github.com/Simeon251">GitHub</a>
-      <a class="btn" href="https://linkedin.com/in/hatangimana-simeon-73b584252">LinkedIn</a>
+      <a class="btn" href="https://github.com/Simeon251" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/hatangimana-simeon-73b584252" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <p class="small">© 2026 Hatangimana Simeon. Kigali, Rwanda.</p>
   </div>
 </footer>
+
+<script>
+  // Light/dark theme switcher
+  const toggleBtn = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeLabel = document.getElementById('themeLabel');
+
+  function getPreferredTheme() {
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+    } catch (e) {}
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'dark') {
+      themeIcon.textContent = '☀️';
+      themeLabel.textContent = 'Light';
+    } else {
+      themeIcon.textContent = '🌙';
+      themeLabel.textContent = 'Dark';
+    }
+  }
+
+  let currentTheme = getPreferredTheme();
+  applyTheme(currentTheme);
+
+  toggleBtn.addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', currentTheme); } catch (e) {}
+    applyTheme(currentTheme);
+  });
+</script>
 
 </body>
 </html>
