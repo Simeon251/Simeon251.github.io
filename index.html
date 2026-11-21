@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hatangimana Simeon – Learning-based control for energy systems</title>
-<meta name="description" content="Hatangimana Simeon, electrical and computer engineer at Carnegie Mellon University Africa. Research in learning-based control, power electronics and battery systems for renewable-rich grids.">
+<title>Hatangimana Simeon – Machine learning and modelling for energy systems</title>
+<meta name="description" content="Hatangimana Simeon, electrical and computer engineer at Carnegie Mellon University Africa. M.S. candidate combining power systems with machine learning, stochastic modelling and data engineering, with research on batteries and renewable-rich grids.">
 <meta property="og:title" content="Hatangimana Simeon">
-<meta property="og:description" content="Learning-based control for renewable-rich grids. Ph.D. applicant, Electrical & Computer Engineering.">
+<meta property="og:description" content="M.S. in Electrical & Computer Engineering (CMU-Africa). Machine learning and modelling for energy systems. Ph.D. applicant, Fall 2027.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F5FA8'/%3E%3Cpath d='M18 4 9 18h6l-2 10 10-15h-6z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -258,6 +258,30 @@
   footer { padding: 4.5rem 0 3.5rem; border-top: 1px solid var(--rule); font-family: var(--sans); }
   footer h2 { margin-bottom: 0.75rem; }
   footer .small { color: var(--muted); font-size: 0.9rem; margin-top: 3rem; }
+
+  /* ---- Added: graduate-focused styling ---- */
+  .hero { background: radial-gradient(1000px 420px at 85% -10%, var(--accent-bg), transparent 70%); }
+  .kicker .dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-right:0.5rem; vertical-align:middle; }
+  h1 .grad { background: linear-gradient(90deg, var(--accent), #7C3AED); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .pillars { display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); margin-top:2.5rem; font-family:var(--sans); }
+  .pillar { background:var(--surface); border:1px solid var(--rule); border-radius:14px; padding:1.1rem 1.25rem; box-shadow:var(--card-shadow); }
+  .pillar .ico { font-size:1.4rem; }
+  .pillar b { display:block; margin-top:0.35rem; font-size:1rem; }
+  .pillar span { color:var(--muted); font-size:0.9rem; line-height:1.45; display:block; margin-top:0.2rem; }
+  .ms-card { background:var(--surface); border:1px solid var(--rule); border-left:4px solid var(--accent); border-radius:14px; padding:1.5rem 1.6rem; box-shadow:var(--card-shadow); }
+  .ms-card .meta { font-family:var(--sans); color:var(--muted); font-size:0.92rem; font-weight:500; margin:0.3rem 0 0.9rem; }
+  .tracks { display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:1.75rem; }
+  .track { background:var(--paper); border:1px solid var(--rule); border-radius:12px; padding:1.1rem 1.2rem; font-family:var(--sans); }
+  .track h4 { margin:0 0 0.7rem; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); }
+  .track ul { list-style:none; margin:0; padding:0; display:grid; gap:0.5rem; font-size:0.95rem; }
+  .track li { display:flex; justify-content:space-between; gap:0.75rem; align-items:baseline; line-height:1.35; }
+  .grade { font-weight:700; color:var(--ink); background:var(--accent-bg); border-radius:6px; padding:0.05rem 0.45rem; font-size:0.82rem; white-space:nowrap; }
+  .win { display:inline-block; font-family:var(--sans); font-size:0.78rem; font-weight:700; color:var(--live); border:1px solid var(--live); border-radius:999px; padding:0.1rem 0.6rem; margin-left:0.5rem; vertical-align:middle; }
+  .gpa-trend { display:flex; align-items:flex-end; gap:0.5rem; height:64px; margin-top:1rem; font-family:var(--sans); }
+  .gpa-trend div { flex:0 0 72px; background:linear-gradient(180deg,var(--accent),var(--accent-bg)); border-radius:6px 6px 0 0; position:relative; min-width:28px; }
+  .gpa-trend div::after { content:attr(data-g); position:absolute; top:-1.2rem; left:0; right:0; text-align:center; font-size:0.75rem; color:var(--muted); font-weight:600; }
+  .gpa-note { font-family:var(--sans); font-size:0.82rem; color:var(--muted); margin-top:0.5rem; }
+  @media print { .site-head { position: static; } }
 </style>
 </head>
 <body>
@@ -268,6 +292,7 @@
     <div class="header-controls">
       <nav aria-label="Main">
         <ul>
+          <li><a href="#graduate">M.S. Studies</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#experience">Experience</a></li>
@@ -289,9 +314,9 @@
       <div class="hero-grid">
         <div>
           <img class="headshot" src="images/photo.jpg" alt="Portrait of Hatangimana Simeon" width="120" height="120" onerror="this.style.display='none'">
-          <p class="kicker">Kigali, Rwanda • Ph.D. Applicant Fall 2027</p>
-          <h1>Learning-based control for renewable-rich grids</h1>
-          <p class="lede">I’m completing my M.S. at Carnegie Mellon University Africa. I study how power electronics and machine learning can keep grids stable, protect batteries and work reliably where data is scarce.</p>
+          <p class="kicker"><span class="dot"></span>M.S. Electrical &amp; Computer Eng. • CMU-Africa • Ph.D. Applicant Fall 2027</p>
+          <h1>Machine learning and modelling for <span class="grad">energy systems</span></h1>
+          <p class="lede">I’m finishing my M.S. in Electrical and Computer Engineering at Carnegie Mellon University Africa, where I combine power systems with machine learning, stochastic modelling and data engineering. I build tools that keep grids stable, batteries healthy and decisions sound where data is scarce.</p>
           <div class="actions">
             <a class="btn primary" href="mailto:shatangi@andrew.cmu.edu">Email me</a>
             <a class="btn" href="cv.pdf">Download CV</a>
@@ -358,10 +383,65 @@
 
       <dl class="facts">
         <div><dt>M.S. Electrical &amp; Computer Eng.</dt><dd>CMU-Africa, Dec 2026</dd></div>
-        <div><dt>Graduate GPA</dt><dd>3.62 (rising 3.38 → 3.83)</dd></div>
+        <div><dt>Graduate GPA</dt><dd>3.62 (rising 3.38 → 3.84)</dd></div>
         <div><dt>B.Sc. Electrical Power Eng.</dt><dd>Ranked 2 / 41, Univ. of Rwanda</dd></div>
+        <div><dt>Hackathon</dt><dd>Best Technical Solution, OSEAS 2026</dd></div>
         <div><dt>Membership</dt><dd>IEEE PES Student Member</dd></div>
       </dl>
+    </div>
+  </section>
+
+  <section class="block" id="graduate">
+    <div class="wrap two">
+      <div>
+        <h2>M.S. Studies</h2>
+        <p class="section-note">Where power engineering meets data. My graduate work trains me to model uncertainty, learn from data and build tools other people can use.</p>
+      </div>
+      <div>
+        <div class="ms-card measure">
+          <h3>M.S. Electrical &amp; Computer Engineering</h3>
+          <p class="meta">Carnegie Mellon University Africa • Aug 2025 – Dec 2026 • Kigali, Rwanda</p>
+          <p>A research-oriented master’s focused on energy systems, stochastic modelling and machine learning. Outside class I run the Energy &amp; Embedded Systems Club, teach as a teaching assistant for two graduate courses, and carry out battery research with CMU-Africa faculty.</p>
+          <div class="gpa-trend" aria-label="Semester GPA rising from 3.38 to 3.84">
+            <div style="height:60%" data-g="3.38"></div>
+            <div style="height:100%" data-g="3.84"></div>
+          </div>
+          <p class="gpa-note">Cumulative GPA 3.62 / 4.0, rising from 3.38 to 3.84 across semesters. Graduate project (MS Grad Project): grade A.</p>
+        </div>
+
+        <div class="tracks">
+          <div class="track">
+            <h4>Machine learning &amp; data</h4>
+            <ul>
+              <li>Data Inference &amp; Applied Machine Learning</li>
+              <li>Introduction to Deep Learning</li>
+              <li>Energy Data Analytics</li>
+              <li>Machine Learning for Earth Observation</li>
+            </ul>
+          </div>
+          <div class="track">
+            <h4>Modelling &amp; uncertainty</h4>
+            <ul>
+              <li>Applied Stochastic Processes <span class="grade">A−</span></li>
+              <li>Energy Systems Modeling <span class="grade">A</span></li>
+              <li>Robotics Principles &amp; Practice</li>
+            </ul>
+          </div>
+          <div class="track">
+            <h4>Power &amp; electric mobility</h4>
+            <ul>
+              <li>Power Electronics for Utility Systems <span class="grade">A−</span></li>
+              <li>Electric Systems for Electric Vehicles <span class="grade">A−</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pillars">
+          <div class="pillar"><span class="ico">⚡</span><b>Power systems</b><span>B.Sc. foundation, utility and industry internships, power electronics.</span></div>
+          <div class="pillar"><span class="ico">📈</span><b>Data &amp; machine learning</b><span>Deep learning, time-series analysis, data pipelines and dashboards.</span></div>
+          <div class="pillar"><span class="ico">🔋</span><b>Batteries &amp; uncertainty</b><span>Lab testing, degradation, Monte Carlo risk, material flows.</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -391,12 +471,24 @@
           <h3>Tracing battery materials through Rwanda’s economy</h3>
           <p class="meta">Graduate Research • CMU-Africa • Jan 2026 – Present<br>Supervised by Prof. Sarath Tennakoon and Prof. Barry Rawn</p>
           <p>Part of a CEPREC project on end-of-life options for microgrid batteries. In Rwanda, battery material flows are not tracked, so nobody knows how much sits in first-life use, second-life storage or waste.</p>
-          <p>I built a first-principles material flow analysis (MFA) model in Python to trace materials from import to end of life. Because national data to validate it does not yet exist, I am collecting laboratory degradation data to ground its second-life assumptions.</p>
+          <p>I am developing a first-principles material flow analysis (MFA) model in Python to trace materials from import to end of life, with Monte Carlo uncertainty. Because national data to validate it does not yet exist, I am using laboratory degradation data to ground its second-life assumptions.</p>
           <div class="badge-list">
             <span class="badge">Python</span>
             <span class="badge">Material Flow Analysis</span>
             <span class="badge">Battery Testing</span>
           </div>
+        </div>
+
+        <div class="entry measure" style="margin-top: 2rem; border-top: 1px solid var(--rule); padding-top: 2rem;">
+          <h3>Screening retired batteries with impedance</h3>
+          <p class="meta">Research Intern • Infrastructure Lab • CMU-Africa • 12 weeks</p>
+          <p>Tested whether a minutes-long impedance measurement can replace hours of cycling when screening retired lithium-ion cells for second life. I found that contact resistance, small temperature changes and state of charge can each cause errors as large as the effect being measured.</p>
+          <div class="numbers">
+            <div><strong>48</strong>Cells tested</div>
+            <div><strong>63</strong>Impedance sweeps</div>
+            <div><strong>1st</strong>Operator handbook written</div>
+          </div>
+          <p style="margin-top:1rem;">I also wrote the lab’s test plan and had its sixteen-channel cycler repaired and recommissioned.</p>
         </div>
       </div>
     </div>
@@ -409,6 +501,18 @@
         <p class="section-note">Software and hardware tools that help people make energy decisions with the data they have.</p>
       </div>
       <div class="measure">
+        <article class="entry">
+          <h3>Team Haske: Real-Time Monitoring Pipeline <span class="win">🏆 Best Technical Solution</span></h3>
+          <p class="meta">Oct 2026 • OSEAS 2026 Hackathon • Team of four</p>
+          <p>An open-source pipeline that streams sensor telemetry to an MQTT broker, keeps full time-series history for live dashboards, and computes health scores and fault events for asset management.</p>
+          <div class="badge-list">
+            <span class="badge">MQTT</span>
+            <span class="badge">Time-series data</span>
+            <span class="badge">Dashboards</span>
+            <span class="badge">Open source</span>
+          </div>
+        </article>
+
         <article class="entry">
           <h3>Battery Capacity Passport</h3>
           <p class="meta">Aug – Dec 2025 • Team Project with Prof. Barry Rawn</p>
@@ -423,11 +527,12 @@
         <article class="entry">
           <h3>MicroGrid Modeller</h3>
           <p class="meta">Jan – May 2026 • With Prof. Nathan Williams</p>
-          <p>Turns an operator’s system parameters into a dispatch simulation and techno-economic analysis of a proposed microgrid, with interactive dashboards and downloadable results.</p>
+          <p>Turns an operator’s system parameters into an hourly dispatch simulation and techno-economic analysis of a proposed microgrid, with a kinetic battery model, stochastic solar and load, generator outages and Monte Carlo risk analysis. For a Rwandan case (100 kWp solar, 200 kWh storage, diesel backup), it showed that a system serving all demand could still miss its debt payments under plausible uncertainty, a risk that deterministic tools miss.</p>
           <div class="badge-list">
             <span class="badge">Python</span>
             <span class="badge">Streamlit</span>
             <span class="badge">Techno-Economic Modeling</span>
+            <span class="badge">Monte Carlo</span>
           </div>
           <div class="links"><a href="https://github.com/Simeon251" target="_blank" rel="noopener">Code on GitHub</a></div>
         </article>
@@ -614,6 +719,7 @@
       <div>
         <h3>Honors &amp; Awards</h3>
         <ul class="plain">
+          <li><b>Best Technical Solution</b>OSEAS 2026 Hackathon, Team Haske</li>
           <li><b>Government of Rwanda Scholarship</b>M.S., 2025–2026</li>
           <li><b>Government of Rwanda Scholarship</b>B.Sc., 2021–2025</li>
           <li><b>Community Spirit Award</b>CMU-Africa, 2025</li>
@@ -634,6 +740,9 @@
               <span class="badge">MATLAB</span>
               <span class="badge">C</span>
               <span class="badge">Pandas</span>
+              <span class="badge">SQL</span>
+              <span class="badge">Monte Carlo</span>
+              <span class="badge">Time-series</span>
             </div>
           </li>
           <li>
