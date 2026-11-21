@@ -377,7 +377,7 @@
             <path class="ctrl" d="M214 236V100h-34V82"/>
             <text x="16" y="318" style="font-size:11.5px">Dashed: control setpoints. Moving dots: power flow.</text>
           </svg>
-          <figcaption>The kind of system I want to study: inverter-connected solar and storage, steered by a learned controller that is guaranteed stable and respects device current limits.</figcaption>
+          <figcaption>How it works: Solar and a battery connect to a shared AC bus through inverters. A learned controller reads measurements from the bus (voltage, frequency, battery state of charge) and sends power setpoints to both inverters. The research question is how to train such a controller from limited data while guaranteeing the grid stays stable and no device exceeds its current limits. My MicroGrid Modeller and battery degradation work are the first steps toward this.</figcaption>
         </figure>
       </div>
 
